@@ -1,10 +1,63 @@
-import React, { Component } from "react";
-import "./App.css";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import { createGlobalStyle } from "styled-components";
 
-class App extends Component {
-  render() {
-    return <div className="App">Hello, Asiance!</div>;
-  }
-}
+import Layout from "./Layout";
+import Post from "./Post";
+
+const GlobalStyles = createGlobalStyle`
+    @import url('https://fonts.googleapis.com/css?family=Open+Sans|Raleway:300,400,700,800|Squada+One|Staatliches');
+
+    * { 
+      box-sizing: border-box;
+      margin:0;
+      padding: 0; 
+    }
+
+    body {
+      font-family: "Raleway", sans-serif;
+      width: 100%;
+      height: 100%;
+      overflow-y: scroll;
+    }
+`;
+
+const App = () => {
+  const [posts, setPosts] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const result = await axios.get("http://localhost:5000/posts");
+      setPosts(result.data);
+    };
+    fetchData();
+  }, []);
+
+  return (
+    <>
+      <GlobalStyles />
+      <Layout>
+        {posts.map((post, index) => {
+          const { title, created_at, updated_at, tags, image_url, body, name, role, avatar, location } = post;
+          return (
+            <Post
+              key={index}
+              title={title}
+              created_at={created_at}
+              updated_at={updated_at}
+              tags={tags}
+              image_url={image_url}
+              body={body}
+              name={name}
+              role={role}
+              avatar={avatar}
+              location={location}
+            />
+          );
+        })}
+      </Layout>
+    </>
+  );
+};
 
 export default App;
