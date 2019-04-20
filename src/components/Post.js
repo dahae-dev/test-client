@@ -18,7 +18,7 @@ const Container = styled.div`
 const PostHeader = styled.div`
   width: 60%;
 
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 992px) {
     width: 100%;
   }
 `;
@@ -43,7 +43,7 @@ const Tags = styled.div`
 const BodyContainer = styled.div`
   display: flex;
 
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 992px) {
     flex-direction: column;
   }
 `;
@@ -59,7 +59,7 @@ const PostBody = styled.div`
   padding: 0 24px;
   font-size: 20px;
 
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 992px) {
     padding: 24px 0;
   }
 `;

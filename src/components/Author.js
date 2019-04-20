@@ -5,7 +5,7 @@ const Container = styled.div`
   float: right;
   display: flex;
 
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 992px) {
     float: none;
     margin-bottom: 16px;
   }
